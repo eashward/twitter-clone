@@ -1,2 +1,6 @@
 
 *.xml
+*.cache
+*.pid
+.byebug_history
+*.log

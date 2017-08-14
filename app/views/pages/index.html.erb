@@ -1,3 +1,76 @@
-<head>
-  index
-</head>
+<% if user_signed_in? %>
+
+    <script>document.location = "/home"</script>
+
+<% else %>
+    <style>
+      body {
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+        ), url("/background.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+      }
+
+      h1 {
+        color: white;
+        font-weight: bold;
+
+      }
+
+      .container-index {
+        margin-right: 15%;
+        margin-left: 15%;
+        color: white
+      }
+
+      .text {
+        color: white;
+        font-weight: 300;
+        font-size: 120%;
+      }
+
+      .footer-links {
+        text-align: center;
+        color: white;
+        margin-top: 30%;
+        font-size: 75%;
+      }
+
+      .sign-in {
+        float: right;
+        width: 300px;
+        height: 150px;
+        margin-top: 8%;
+      }
+      .sign-up {
+        float: right;
+        width: 300px;
+        height: 250px;
+      }
+    </style>
+
+    <div class="container-index row">
+      <div class="col-sm-6">
+        <h1> Welcome to Twitter</h1>
+        <p class="text"> Connect with friends! <br> see what people are talking about </p>
+      </div>
+      <div class="col-sm-6">
+        <div class="sign-in panel">
+        </div>
+        <div class="sign-up panel">
+        </div>
+      </div>
+      <div class="col-sm-6">
+
+      <p class="footer-links"> About | help</p>
+
+    </div>
+    </div>
+
+
+<% end %>
