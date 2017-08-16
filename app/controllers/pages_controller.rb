@@ -22,6 +22,7 @@ class PagesController < ApplicationController
 
   def explore
     @posts = Post.try(:all)
+    @newpost = Post.new
 
   end
 

@@ -4,3 +4,5 @@
 *.pid
 .byebug_history
 *.log
+*.iml
+*.sqlite3
