@@ -5,9 +5,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    @post.save
+    @post = post_service.create_post(post_params)
     respond_to do |f|
       f.html {redirect_to "", notice: "post created!"}
     end
