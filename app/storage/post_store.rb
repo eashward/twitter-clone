@@ -12,15 +12,23 @@ module Storage
 
   class PostStore
 
-    def new_post
+    def build_post
       Post.new
     end
 
-    def create_post(params)
-      @post = new_post
-      @post.user_id = current_user.id
-      @post.comment = params[:comment]
-      @post.save
+    def create_post(post)
+      post.save
+      post
+    rescue ActiveRecord::RecordInvalid
+      raise ActiveRecord::RecordInvalid.new(post)
+    end
+
+    def get_following_users_post(user_ids)
+      Post.eager_load(:user).where("users.id IN (?)", user_ids)
+    end
+
+    def get_user_posts(user)
+      Post.where("user_id = ?", user.id)
     end
 
   end

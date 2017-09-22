@@ -8,11 +8,14 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
 
-  root 'pages#index'
+  # root 'pages#index'
+  devise_scope :user do
+    root :to => 'devise/sessions#new'
+  end
   resources :posts
-  get '/home' => 'pages#home'
-  get '/user/:username' => 'pages#profile'
-  get '/explore' => 'pages#explore'
+  get '/home', to: 'pages#home'
+  get '/user/:username',  to: 'pages#profile'
+  get '/explore', to: 'pages#explore'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

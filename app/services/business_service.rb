@@ -1,6 +1,6 @@
 module Services
   class BusinessService
-    attr_reader :user
+    attr_accessor :user
 
     def initialize(user = nil, engine = nil)
       @user = user

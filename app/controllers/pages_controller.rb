@@ -1,11 +1,12 @@
 class PagesController < ApplicationController
+
+  before_action :build_post
   def index
 
   end
 
   def home
-    @posts = Post.all
-    @newpost = Post.new
+    @posts = post_service.get_following_users_post(current_user)
 
   end
 
@@ -15,15 +16,15 @@ class PagesController < ApplicationController
     rescue
       redirect_to root_path, notice: "user not found"
     end
-    @posts = Post.where("user_id = ?", @user.try(:id))
-    @newpost = Post.new
-
+    @posts = post_service.get_user_posts(@user)
   end
 
   def explore
     @posts = Post.try(:all)
-    @newpost = Post.new
+  end
 
+  def build_post
+    @newpost = post_service.build_post
   end
 
 end

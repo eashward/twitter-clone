@@ -7,3 +7,4 @@
 *.iml
 *.sqlite3
 .idea/.generators
+log/development.log
